@@ -29,6 +29,12 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
 
+# 仅用 Shiro 过滤器链鉴权，关闭其注解代理：
+# 否则 Shiro 的 DefaultAdvisorAutoProxyCreator 会把 @Transactional 服务二次包装成 JDK 代理，按类型注入失败
+shiro:
+  annotations:
+    enabled: false
+
 logging:
   level:
     com.evops: INFO
