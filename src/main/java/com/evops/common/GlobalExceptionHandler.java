@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(BusinessException.class)
+    public ApiResponse<Void> handleBusiness(BusinessException ex) {
+        return ApiResponse.fail(ex.getMessage());
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ApiResponse<Void> handleIllegalArgument(IllegalArgumentException ex) {
         return ApiResponse.fail(ex.getMessage());
